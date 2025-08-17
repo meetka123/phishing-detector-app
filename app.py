@@ -1,3 +1,6 @@
+import re
+import tldextract
+
 def extract_features(url):
     ext = tldextract.extract(url)
     hostname = ext.domain + "." + ext.suffix
@@ -30,7 +33,7 @@ def extract_features(url):
         "QueryLength": len(url.split("?")[-1]) if "?" in url else 0,
         "DoubleSlashInPath": path.count("//"),
 
-        # Baaki dataset ke features abhi 0
+        # Remaining features default 0
         "NumSensitiveWords": 0,
         "EmbeddedBrandName": 0,
         "PctExtHyperlinks": 0,
@@ -54,4 +57,5 @@ def extract_features(url):
         "PctExtResourceUrlsRT": 0,
         "AbnormalExtFormActionR": 0,
         "ExtMetaScriptLinkRT": 0,
-        "PctExtNullSelfRedirectHyperlinksRT": 0,
+        "PctExtNullSelfRedirectHyperlinksRT": 0
+    }
